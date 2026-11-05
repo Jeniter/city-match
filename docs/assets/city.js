@@ -129,6 +129,7 @@
       '<p class="disclaimer">' + esc(D.site.disclaimer) + '</p>';
 
     show('result');
+    fitAll();
     requestAnimationFrame(function () {
       requestAnimationFrame(function () { view.querySelectorAll('.fill').forEach(function (f) { f.style.width = f.dataset.w + '%'; }); });
     });
@@ -142,6 +143,16 @@
       document.querySelector('meta[name="theme-color"]').setAttribute('content', '#FBF7F2');
       show('quiz'); renderQuestion(true);
     };
+  }
+
+  // 结果页的金句和标语：避免最后一行只剩一两个字
+  function fitAll() {
+    var v = $('view-result');
+    if (v.hidden) return;
+    window.FitText(v.querySelector('.quote p'), 0.85);
+    window.FitText(v.querySelector('.r-tagline'), 0.85);
+    window.FitText(v.querySelector('.disclaimer'), 0.85);
+    v.querySelectorAll('.section p:not(.quote p), .why-list li > span:last-child').forEach(window.NoOrphan);
   }
 
   function sec(ico, title, body) {
@@ -161,6 +172,8 @@
     show('quiz'); renderQuestion(true);
   };
   $('btn-last').onclick = function () { answers = load().answers; renderResult(); };
+  var resizeTimer;
+  window.addEventListener('resize', function () { clearTimeout(resizeTimer); resizeTimer = setTimeout(fitAll, 120); });
   $('btn-back').onclick = function () { if (idx > 0 && !locked) { idx--; save(); renderQuestion(true); } };
   $('q-options').addEventListener('click', function (e) {
     var b = e.target.closest('.option'); if (b) choose(+b.dataset.i);

@@ -108,7 +108,7 @@ img { max-width: 100%; display: block; }
 .r-label { font-size: 13px; letter-spacing: 4px; opacity: .85; }
 .r-city { font-family: var(--serif); font-size: 64px; line-height: 1.2; margin: 6px 0 2px; letter-spacing: 6px; }
 .r-nick { display: inline-block; font-size: 15px; padding: 4px 14px; border-radius: 99px; background: rgba(255,255,255,.18); }
-.r-tagline { font-size: 15px; margin-top: 14px; opacity: .95; }
+.r-tagline { font-size: 15px; margin: 14px auto 0; opacity: .95; }
 .r-match { display: flex; align-items: baseline; justify-content: center; gap: 6px; margin-top: 18px; }
 .r-match b { font-size: 40px; font-weight: 800; font-variant-numeric: tabular-nums; }
 .r-match span { font-size: 13px; opacity: .85; }
@@ -148,16 +148,17 @@ img { max-width: 100%; display: block; }
 .alt .dot { width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; color: #fff; font-family: var(--serif); font-size: 18px; font-weight: 700; flex-shrink: 0; }
 .alt h3 { font-size: 15px; display: flex; gap: 8px; align-items: baseline; }
 .alt h3 small { font-size: 12px; color: var(--ink-3); font-weight: 400; }
-.alt p { font-size: 13px; line-height: 1.6; }
+.alt p { font-size: 13px; line-height: 1.6; text-align: left; } /* 窄栏两端对齐会把字间距拉得很散 */
 .alt.worst .dot { background: #8E8A97 !important; }
 
 .quote { text-align: center; padding: 30px 22px; }
-.quote p { font-family: var(--serif); font-size: 19px; line-height: 1.7; color: var(--ink); text-align: center; }
-.quote p::before, .quote p::after { content: "“"; color: var(--accent); font-size: 28px; }
+.quote p { font-family: var(--serif); font-size: 19px; line-height: 1.7; color: var(--ink); text-align: center; margin: 0 auto; }
+/* 引号用 em，字号缩小时跟着一起缩 */
+.quote p::before, .quote p::after { content: "“"; color: var(--accent); font-size: 1.5em; }
 .quote p::after { content: "”"; }
 
 .actions { display: grid; gap: 12px; margin: 22px 0 10px; }
-.disclaimer { font-size: 12px; color: var(--ink-3); text-align: center; margin-top: 16px; }
+.disclaimer { font-size: 12px; color: var(--ink-3); text-align: center; margin: 16px auto 0; }
 
 /* 分享图弹层 */
 .modal { position: fixed; inset: 0; background: rgba(20, 18, 28, .94); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 20px; z-index: 10; }
