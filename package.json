@@ -1,0 +1,11 @@
+{
+  "name": "xhs-quiz",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/check-profiles.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "preview": "npm run build && python3 -m http.server 8080 -d docs"
+  }
+}
